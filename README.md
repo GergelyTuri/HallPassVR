@@ -21,6 +21,10 @@ Our future plan: 1) Adding algorithm which can stablize the totally brightness o
 
 Relative Document: 
 
+p13d Library: 
+https://pi3d.github.io/html/ReadMe.html
+
+Relative paper: 
 1. https://www.nature.com/articles/d41586-019-00791-w
 2. https://www.phenosys.com/products/virtual-reality
 3. https://academic.oup.com/cz/article/63/1/109/2962415
