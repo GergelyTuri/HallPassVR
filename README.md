@@ -28,6 +28,7 @@ Relative Document:
 5. https://www.biorxiv.org/content/10.1101/2020.09.13.295469v1?rss=1
 6. https://pubmed.ncbi.nlm.nih.gov/32149601/
 7. https://www.janelia.org/open-science/large-spherical-treadmill-rodents
+8. https://www.ti.com/store/ti/en/p/product/?p=DLPDLCR2010EVM
 
 IMPORTANT: 
 How to setup and run the demo: 1) Download and intall the python file Silo1023.py under pi3d_demo. Run command: python3 Silo1023.py on the terminal under the pi3d_demo 
