@@ -35,4 +35,4 @@ Relative paper:
 8. https://www.ti.com/store/ti/en/p/product/?p=DLPDLCR2010EVM
 
 IMPORTANT: 
-How to setup and run the demo: 1) Download and intall the python file Silo1023.py under pi3d_demo. Run command: python3 Silo1023.py on the terminal under the pi3d_demo 
+How to setup and run the demo: 1) Download and intall the python file dem0_5_10.py under pi3d_demo. Run command: python demo_5_10.py on the terminal under the pi3d_demo 
