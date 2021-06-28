@@ -24,6 +24,10 @@ Relative Document:
 p13d Library: 
 https://pi3d.github.io/html/ReadMe.html
 
+
+STM32 bootload instruction:
+https://circuitdigest.com/microcontroller-projects/programming-stm32f103c8-board-using-usb-port
+
 Relative paper: 
 1. https://www.nature.com/articles/d41586-019-00791-w
 2. https://www.phenosys.com/products/virtual-reality
