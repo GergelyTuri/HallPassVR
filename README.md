@@ -47,6 +47,9 @@ How to setup and run the demo:
 4) Corridor_demo_7_2.py: Individual VR corridor. Run: ```python Corridor_demo_7_2.py```
 
 
+![Alt text]()
+
+
 
 ------------------------------------------------------------------Relative Document---------------------------------------------------------------- 
 
