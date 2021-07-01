@@ -41,7 +41,7 @@ FUTURE PLAN:
 
 IMPORTANT: 
 How to setup and run the demo: 
-1) Download, unzip the python file demo_7_2 zip file under pi3d/pi3d_demo. 
+1) Download, unzip the python file demo_7_2.zip file under MouseVR/demo_complete to pi3d/pi3d_demo. 
 2) Run ```python3 GUI_Interface_demo_7_2.py```  to open GUI and run the VR.
 3) nuke.py: this file is used for cleaning all history combination/path file and other data. Run: ```python3 nuke.py```
 4) Corridor_demo_7_2.py: Individual VR corridor. Run: ```python Corridor_demo_7_2.py```
