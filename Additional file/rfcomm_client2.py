@@ -86,7 +86,7 @@ sock.setblocking(0)
 
 print("connected")
 
-#input_and_send()
+#input_and_send() 
 while True:
 	#print ("outer loop")
 	rx_and_echo()
