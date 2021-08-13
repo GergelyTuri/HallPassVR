@@ -15,3 +15,6 @@ This folder include important files during development
                                      2) Compile:   1) Wired_Version: connect ESP32 TX/RX, GND with Rasp Pi4 TX/RX, GND.
                                                                      in Terminal: python3 Corridor_demo_8_12.py.
                                                    2) Bluetooth_Version: in Terminal: python3 Corridor_demo_8_12.py. 
+                                                   
+5) Arduno-encoder.ino: Rotary Encoder Code Used for Arduino Uno (Without library) 
+6) ESP32_encoder.ino : Rotary Encoder Code Used for ESP32 (Only include GPIO Serial Communication)
