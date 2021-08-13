@@ -1,0 +1,1 @@
+['image/black.jpg', 'image/black.jpg', 'image/black.jpg', 'image/chess_pattern_5x5_sparser.jpg', 'image/black.jpg', 'image/black.jpg', 'image/chess_pattern_5x5_sparser.jpg', 'image/black.jpg', 'image/black.jpg', 'image/chess_pattern_5x5_sparser.jpg', 'image/black.jpg', 'image/black.jpg']
