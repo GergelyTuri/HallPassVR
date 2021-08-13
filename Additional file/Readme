@@ -14,4 +14,4 @@ This folder include important files during development
                How to Compile:       1) Download and unzip file, save under pi3d_demo
                                      2) Compile:   1) Wired_Version: connect ESP32 TX/RX, GND with Rasp Pi4 TX/RX, GND.
                                                                      in Terminal: python3 Corridor_demo_8_12.py.
-                                                   2) Bluetooth_Version: in Terminal: python3 Corridor_demo_8_12.py.
+                                                   2) Bluetooth_Version: in Terminal: python3 Corridor_demo_8_12.py. 
