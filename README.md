@@ -47,10 +47,10 @@ How to setup and run the demo:
 4) Corridor_demo_7_2.py: Individual VR corridor. Run: ```python Corridor_demo_7_2.py```
 
 OVERALL LOOK SCREENSHOT: 
-![Screenshot_VR/GUI](2021-07-01-173630_2944x1080_scrot.png)
+![Screenshot_VR/GUI](images/gui.png)
 
 OVERALL LOOK WTIH PROJECTOR: 
-![Screenshot_VR/GUI_camera](20210701_174939.jpg)
+![Screenshot_VR/GUI_camera](images/camera.png)
 
 
 
