@@ -507,7 +507,7 @@ def corridor_build():
 
     if corridor_enable == 1:
         # os.system('python Corridor_test_6_1.py')
-        os.system('python3 VR_open.py')
+        os.system('python3 vr_start.py')
         # os.system('python test7.py')
     else:
         pass
@@ -1083,7 +1083,7 @@ def image_process():
 
 def test():
     # os.system('python Corridor_test_6_1.py')
-    os.system('python3 VR_open.py')
+    os.system('python3 vr_start.py')
 
 
 # --- DEFAULT ---

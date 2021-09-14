@@ -1,0 +1,25 @@
+2021-09-12 18:56:01
+images/history_paths/Teste2021-09-12 18:56:01.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 4
+
+2021-09-12 18:56:07
+images/history_paths/Teste2021-09-12 18:56:07.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 4
+
+2021-09-12 20:00:16
+images/history_paths/Teste22021-09-12 20:00:16.jpg
+0 0 0 3 0 0 0 0 0 0 0 0
+Length: 4
+
+2021-09-12 20:00:35
+images/history_paths/Teste22021-09-12 20:00:35.jpg
+0 0 0 3 0 0 0 0 0 0 0 0
+Length: 4
+
+2021-09-12 20:00:55
+images/history_paths/Teste32021-09-12 20:00:55.jpg
+0 0 0 3 0 0 0 0 0 0 0 0
+Length: 4
+

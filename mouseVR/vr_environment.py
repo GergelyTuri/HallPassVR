@@ -16,16 +16,20 @@ import re
 print("in here, function start, test 6/1")
 
 # --- SET UP ---
-ardSer = serial.Serial(
-    port='/dev/ttyS0',
-    baudrate=115200,  # 9600,
-    parity=serial.PARITY_NONE,
-    stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=1
-)
+try:
+    ardSer = serial.Serial(
+        port='/dev/ttyS0',
+        baudrate=115200,  # 9600,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS,
+        timeout=1
+    )
+except OSError as err:
+    print(err)
+    ardSer = None
 
-output_serial = open("serial_output.txt", "w")
+output_serial = open("tmp/serial_output.txt", "w")
 rot_fix = -90
 tilt_fix = -90
 corridor_start = 16
@@ -36,7 +40,7 @@ winw, winh, bord = 1200, 700, 0
 # 384 - 2m
 
 # --- test ---
-share = open("path.txt", "r")
+share = open("tmp/path.txt", "r")
 
 display_array = share.readline()
 display_array_length = share.readline()
@@ -80,7 +84,7 @@ def pattern_get():
     global pattern_count
 
     # print("file_list: ", str(file_list[0]))
-    string_dir = 'vr_pattern/'
+    string_dir = 'images/patterns/'
     extensions = [".jpg"]
     file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
 
@@ -123,7 +127,7 @@ read_data()
 # print("test pattern name: ", str(pattern_list[display_array[0]]))
 
 # --- TEXTURE ----
-blockimg = pi3d.Texture("../textures/crop.jpg")  # defined
+blockimg = pi3d.Texture("images/textures/crop.jpg")  # defined
 # print(blockimg)
 pattern1 = pi3d.Texture(pattern_list[int(display_list[0])])
 pattern2 = pi3d.Texture(pattern_list[int(display_list[1])])
@@ -140,11 +144,11 @@ pattern10 = pi3d.Texture(pattern_list[int(display_list[9])])
 pattern11 = pi3d.Texture(pattern_list[int(display_list[10])])
 pattern12 = pi3d.Texture(pattern_list[int(display_list[11])])
 
-roofedgeimg = pi3d.Texture("../textures/crop.jpg")
-roofimg = pi3d.Texture("../textures/crop.jpg")
-ectex = [pi3d.Texture('../textures/crop.jpg')]
-bumpimg = pi3d.Texture("../textures/grey.jpg")
-endwall = pi3d.Texture("../textures/hornbeam2.png")
+roofedgeimg = pi3d.Texture("images/textures/crop.jpg")
+roofimg = pi3d.Texture("images/textures/crop.jpg")
+ectex = [pi3d.Texture('images/textures/crop.jpg')]
+bumpimg = pi3d.Texture("images/textures/grey.jpg")
+endwall = pi3d.Texture("images/textures/hornbeam2.png")
 
 myecube = pi3d.EnvironmentCube(size=20000.0, maptype="HALFCROSS")
 myecube.set_draw_details(flatsh, ectex)
@@ -154,7 +158,7 @@ mapwidth = 10000.0
 mapdepth = 10000.0
 mapheight = 0.0
 
-mymap = pi3d.ElevationMap(mapfile="../textures/white.png",
+mymap = pi3d.ElevationMap(mapfile="images/textures/white.png",
                           width=mapwidth, depth=mapdepth, height=mapheight,
                           divx=64, divy=64)
 
@@ -263,6 +267,7 @@ round_count = 0
 
 pi3d.SolidObject.drawall()
 
+prev_y = 0
 while DISPLAY.loop_running():
     # print("xm value: ", man.x())
     CAMERA.reset()
@@ -284,28 +289,33 @@ while DISPLAY.loop_running():
 
     # used to rotate the camera, data for camera rotating
     mx, my = mymouse.position()
+    print(my)
     # print(ardSer.in_waiting)
-    while ardSer.in_waiting:
-        # print(ardSer.inWaiting())
-        ardStr = ardSer.readline()
-        print(ardStr)
-        DardStr = ardStr.decode("utf-8")
-        try:
-            if DardStr.find(',') != -1:
-                dy_string = DardStr[0:DardStr.find(',')]
-                dy_list = [int(d) for d in re.findall(r'-?\d+', dy_string)]
-                # print(dy_string)
-                dy = dy_list[0]
-                print("dy: ", dy)
-                pos = int(dy)
-            else:
-                pos = 0
+    if ardSer is not None:
+        while ardSer.in_waiting:
+            # print(ardSer.inWaiting())
+            ardStr = ardSer.readline()
+            print(ardStr)
+            DardStr = ardStr.decode("utf-8")
+            try:
+                if DardStr.find(',') != -1:
+                    dy_string = DardStr[0:DardStr.find(',')]
+                    dy_list = [int(d) for d in re.findall(r'-?\d+', dy_string)]
+                    # print(dy_string)
+                    dy = dy_list[0]
+                    print("dy: ", dy)
+                    pos = int(dy)
+                else:
+                    pos = 0
 
-        except:
-            print("reading problem")
-            ardSer.flush()
+            except:
+                print("reading problem")
+                ardSer.flush()
 
-    pos = pos / 10
+    pos = my - prev_y
+    prev_y = my
+
+    # pos = pos / 10
 
     # pos = 4
 
@@ -329,7 +339,8 @@ while DISPLAY.loop_running():
             mykeys.close()
             mymouse.stop()
             DISPLAY.stop()
-            ardSer.close()
+            if ardSer is not None:
+                ardSer.close()
             break
     else:
         pass

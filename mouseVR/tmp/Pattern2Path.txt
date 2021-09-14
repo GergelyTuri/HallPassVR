@@ -1,1 +1,1 @@
-['images/history_combs/HistoryComb 0001.jpg', 'images/history_combs/HistoryComb 0001.jpg', 'images/history_combs/HistoryComb 0001.jpg', 'images/history_combs/HistoryComb 0001.jpg', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing']
+['Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing', 'Nothing']
