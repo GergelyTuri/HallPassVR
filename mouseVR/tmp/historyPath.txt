@@ -23,3 +23,23 @@ images/history_paths/Teste32021-09-12 20:00:55.jpg
 0 0 0 3 0 0 0 0 0 0 0 0
 Length: 4
 
+2021-09-14 21:35:20
+images/history_paths/test_20210914012021-09-14 21:35:20.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 4
+
+2021-09-15 09:17:07
+images/history_paths/Test2021-09-15 09:17:07.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 2
+
+2021-09-15 18:54:13
+images/history_paths/Test2021-09-15 18:54:13.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 4
+
+2021-09-16 21:08:24
+images/history_paths/Test2021-09-16 21:08:24.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 4
+
