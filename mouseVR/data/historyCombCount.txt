@@ -1,3 +1,4 @@
 HistoryComb1 , 0 0 0 3
 HistoryComb2 , 0 0 3 0
 HistoryComb3 , 0 3 0 0
+HistoryComb4 , 3 4 6 0

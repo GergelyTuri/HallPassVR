@@ -126,6 +126,7 @@ def default():
     string_dir = 'images/thumbnails/'
     extensions = [".jpg"]
     file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
+    file_list.sort()
     # file_list  = os.listdir(string_dir)
 
     pathToImages = []
@@ -1052,7 +1053,9 @@ def image_process():
     extensions = [".jpg"]
 
     file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
+    file_list.sort()
     corridor_pattern_dir_list = [f for f in os.listdir(corridor_pattern_dir) if os.path.splitext(f)[1] in extensions]
+    corridor_pattern_dir_list.sort()
 
     # print(file_list)
     # print(corridor_pattern_dir_list)

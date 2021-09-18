@@ -43,3 +43,43 @@ images/history_paths/Test2021-09-16 21:08:24.jpg
 0 0 0 3 0 0 3 0 0 3 0 0
 Length: 4
 
+2021-09-17 20:57:09
+images/history_paths/test2021-09-17 20:57:09.jpg
+3 6 9 12 0 0 0 0 0 0 0 0
+Length: 2
+
+2021-09-17 21:00:03
+images/history_paths/Testee2021-09-17 21:00:03.jpg
+0 0 0 0 0 0 0 0 0 0 0 0
+Length: 40
+
+2021-09-17 21:00:28
+images/history_paths/Testee2021-09-17 21:00:28.jpg
+0 0 0 0 0 0 0 0 0 0 0 0
+Length: 4
+
+2021-09-17 21:01:31
+images/history_paths/Test52021-09-17 21:01:31.jpg
+0 0 0 3 0 0 3 0 3 6 9 12
+Length: 4
+
+2021-09-18 20:42:38
+images/history_paths/Final2021-09-18 20:42:38.jpg
+0 0 0 3 0 0 3 0 0 3 0 0
+Length: 2
+
+2021-09-18 21:36:44
+images/history_paths/Foi2021-09-18 21:36:44.jpg
+0 0 0 3 0 0 0 0 0 0 0 0
+Length: 2
+
+2021-09-18 21:51:21
+images/history_paths/Tess2021-09-18 21:51:21.jpg
+3 4 6 0 0 0 0 0 0 0 0 0
+Length: 2
+
+2021-09-18 21:52:15
+images/history_paths/Tess2021-09-18 21:52:15.jpg
+3 4 6 0 3 4 6 0 3 4 6 0
+Length: 2
+
