@@ -125,7 +125,8 @@ def default():
 
     string_dir = 'images/thumbnails/'
     extensions = [".jpg"]
-    file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
+    file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[
+        1] in extensions]
     file_list.sort()
     # file_list  = os.listdir(string_dir)
 
@@ -183,7 +184,8 @@ def history_comb_read():
     max = 0
     new = 0
 
-    History_comb_list_unsorted = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
+    History_comb_list_unsorted = [f for f in os.listdir(
+        string_dir) if os.path.splitext(f)[1] in extensions]
     # print(History_comb_list_unsorted)
     History_comb_list = sorted(History_comb_list_unsorted)
     # print(History_comb_list)
@@ -242,8 +244,10 @@ def onClick_Add():
 
             CombList.insert(END, Add_pattern)
             curr_list.append(pathToImages[int(PatternList.curselection()[0])])
-            curr_list_count.append(ImageNumCount[int(PatternList.curselection()[0])])
-            Pattern2Path.append(pathToImages[int(PatternList.curselection()[0])])
+            curr_list_count.append(
+                ImageNumCount[int(PatternList.curselection()[0])])
+            Pattern2Path.append(
+                pathToImages[int(PatternList.curselection()[0])])
         else:
             messagebox.showerror("Error", "Out of Limit")
 
@@ -313,7 +317,6 @@ def canvas_clean():
         canvas1_clean_enable = 1
         canvas_enable = 1
         comb1_refresh()
-
 
     elif StringVar == lab_comb2:
         # print("combination 2 here")
@@ -401,8 +404,10 @@ def onClick_Generate():
 
             images = [Image.open(x) for x in comb_list]
             # pick the image which is the smallest, and resize the others to match it (can be arbitrary image shape here)
-            min_shape = sorted([(np.sum(i.size), i.size) for i in images])[0][1]
-            imgs_comb = np.hstack((np.asarray(i.resize(min_shape)) for i in images))
+            min_shape = sorted([(np.sum(i.size), i.size)
+                               for i in images])[0][1]
+            imgs_comb = np.hstack(
+                (np.asarray(i.resize(min_shape)) for i in images))
             # save that combination picture
             imgs_comb = Image.fromarray(imgs_comb)
             imgs_comb.save(patternname)
@@ -432,7 +437,8 @@ def onClick_Generate():
 
         comb = [Image.open(y) for y in Path]
         min_shape_path = sorted([(np.sum(i.size), i.size) for i in comb])[0][1]
-        imgs_path = np.hstack((np.asarray(i.resize(min_shape_path)) for i in comb))
+        imgs_path = np.hstack(
+            (np.asarray(i.resize(min_shape_path)) for i in comb))
 
         imgs_path = Image.fromarray(imgs_path)
         imgs_path.save(pic_path)
@@ -441,10 +447,12 @@ def onClick_Generate():
         comb2_refresh()
         comb3_refresh()
         path_refresh()
-        list_gen(output_path_12, comb_list, repl_list_strt_idx, repl_list_end_idx)
+        list_gen(output_path_12, comb_list,
+                 repl_list_strt_idx, repl_list_end_idx)
         # print("the current path list: ", output_path_12)
 
-        list_gen(output_path_12_num, comb_list_count, repl_list_strt_idx, repl_list_end_idx)
+        list_gen(output_path_12_num, comb_list_count,
+                 repl_list_strt_idx, repl_list_end_idx)
         # print("the current number array: ", output_path_12_num)
         messagebox.showinfo("Information", "Generate Complete")
 
@@ -489,7 +497,7 @@ def onClick_Start():
 
     output_path_12_num_string = [str(int) for int in output_path_12_num]
     final_output_path = " ".join(output_path_12_num_string)
-    output = open("tmp/path.txt", "w")
+    output = open("data/pattern_file.txt", "w")
     output.write(str(final_output_path))
     output.write('\n')
     output.write(str(result_length_digit))
@@ -529,7 +537,8 @@ def onClick_upload():
     global Upload_history_comb_path
 
     history_comb_pos = int(HistoryList.curselection()[0])
-    Upload_history_comb_path = path2historyComb[int(HistoryList.curselection()[0])]
+    Upload_history_comb_path = path2historyComb[int(
+        HistoryList.curselection()[0])]
     # print("upload history combination is: ", Upload_history_comb_path)
     historyCombCount = open("data/historyCombCount.txt", "r+")
 
@@ -569,7 +578,8 @@ def onClick_Delete_hi():
 
 def onClick_Del_hi_all():
     # print("onClick_Del_hi_all in here")
-    result = messagebox.askquestion('Delete All', 'This will remove all historys, do you want to do that')
+    result = messagebox.askquestion(
+        'Delete All', 'This will remove all historys, do you want to do that')
     if result == 'yes':
 
         deleteall = open("data/historyCombCount.txt", "r+")
@@ -747,7 +757,8 @@ def History_list(comb, count, InforArray):
     current_time = t.strftime("%Y-%m-%d %H:%M:%S")
 
     pattern_count = "HistoryComb" + str(count)
-    history_pic = history_comb_path + "HistoryComb " + str(History_count).zfill(4) + '.jpg'
+    history_pic = history_comb_path + "HistoryComb " + \
+        str(History_count).zfill(4) + '.jpg'
 
     # print("InforArray is: ", InforArray)
 
@@ -914,7 +925,8 @@ def HistoryPath(sentence):
     else:
         t = datetime.datetime.now()
         current_time = t.strftime("%Y-%m-%d %H:%M:%S")
-        history_path_img = history_path_folder + result_name + str(current_time) + '.jpg'
+        history_path_img = history_path_folder + \
+            result_name + str(current_time) + '.jpg'
         print(history_path_img)
 
         img = Image.open(pic_path)
@@ -1052,9 +1064,11 @@ def image_process():
 
     extensions = [".jpg"]
 
-    file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
+    file_list = [f for f in os.listdir(string_dir) if os.path.splitext(f)[
+        1] in extensions]
     file_list.sort()
-    corridor_pattern_dir_list = [f for f in os.listdir(corridor_pattern_dir) if os.path.splitext(f)[1] in extensions]
+    corridor_pattern_dir_list = [f for f in os.listdir(
+        corridor_pattern_dir) if os.path.splitext(f)[1] in extensions]
     corridor_pattern_dir_list.sort()
 
     # print(file_list)
@@ -1119,16 +1133,26 @@ PatternList.bind('<<ListboxSelect>>', buttonHandler)
 HistoryList.bind('<<ListboxSelect>>', buttonHandler_History)
 
 # --- Button ---
-Button_ADD = Button(ListFrame, text="Add", width=5, height=2, command=onClick_Add)
-Button_Delete = Button(ListFrame, text="Delete", width=5, height=2, command=onClick_Delete)
-Button_Delete_All = Button(ListFrame, text="Delete All", width=7, height=2, command=onClick_Delete_All)
-Button_Generate = Button(ListFrame, text="Generate", width=8, height=2, command=onClick_Generate)
-Button_Exit = Button(root, text="Exit", width=10, height=2, command=onClick_Exit)
-Button_Upload = Button(HistoryComb, text="Upload", width=7, height=2, command=onClick_upload)
-Button_Delete_hi = Button(HistoryComb, text="Delete", width=7, height=2, command=onClick_Delete_hi)
-Button_Del_hi_all = Button(HistoryComb, text="Delete All", width=10, height=2, command=onClick_Del_hi_all)
-Button_Input = Button(Input, text="Read", width=7, height=2, command=getTextInput)
-Button_Start = Button(root, text="Start", width=10, height=2, command=onClick_Start)
+Button_ADD = Button(ListFrame, text="Add", width=5,
+                    height=2, command=onClick_Add)
+Button_Delete = Button(ListFrame, text="Delete", width=5,
+                       height=2, command=onClick_Delete)
+Button_Delete_All = Button(
+    ListFrame, text="Delete All", width=7, height=2, command=onClick_Delete_All)
+Button_Generate = Button(ListFrame, text="Generate",
+                         width=8, height=2, command=onClick_Generate)
+Button_Exit = Button(root, text="Exit", width=10,
+                     height=2, command=onClick_Exit)
+Button_Upload = Button(HistoryComb, text="Upload",
+                       width=7, height=2, command=onClick_upload)
+Button_Delete_hi = Button(HistoryComb, text="Delete",
+                          width=7, height=2, command=onClick_Delete_hi)
+Button_Del_hi_all = Button(
+    HistoryComb, text="Delete All", width=10, height=2, command=onClick_Del_hi_all)
+Button_Input = Button(Input, text="Read", width=7,
+                      height=2, command=getTextInput)
+Button_Start = Button(root, text="Start", width=10,
+                      height=2, command=onClick_Start)
 # lambda: [onClick_Start(),os.system('python Corridor_test_5_20.py')]
 
 Button_ADD.grid(row=5, column=2, sticky=N)
@@ -1204,7 +1228,8 @@ canvas_history_comb.grid(row=6, column=0, columnspan=6, sticky=W, padx=10)
 # --- OPTION MEUN ---
 clicked = StringVar()
 clicked.set("Combination 1")
-drop = OptionMenu(ListFrame, clicked, "Combination 1", "Combination 2", "Combination 3")
+drop = OptionMenu(ListFrame, clicked, "Combination 1",
+                  "Combination 2", "Combination 3")
 drop.grid(row=5, column=9)
 
 oldstr = 1
