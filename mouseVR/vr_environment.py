@@ -31,7 +31,14 @@ def build_argparser() -> ArgumentParser():
         default=SUPPRESS,
         help="Show this help message and exit.")
 
-    # Serial arguments.
+    # Input arguments.
+    arg_group.add_argument(
+        "-m", "--mouse",
+        default=True,
+        help="Use the mouse movements as the main component to control the"
+             "virtual environment.",
+        type=bool)
+
     arg_group.add_argument(
         "-p", "--port",
         default=r"/dev/ttyS0",
@@ -61,6 +68,14 @@ def build_argparser() -> ArgumentParser():
         "-e", "--elevation",
         help="The user's point of view in the enviroment.",
         default=20,
+        type=int
+    )
+
+    arg_group.add_argument(
+        "-s", "--step",
+        help="The number of 2D coordinates for each interaction in the virtual"
+             "environment.",
+        default=1,
         type=int
     )
 
@@ -127,15 +142,22 @@ class VirtualEnvironment:
                 "criteria")
         self._default_length = dl
 
-    def __init__(self, port: str = "/dev/ttyS0", baudrate: int = 115200,
-                 elevation: int = 20, has_wall: bool = False):
+    def __init__(self, mouse: bool = True,
+                 port: str = "/dev/ttyS0", baudrate: int = 115200,
+                 elevation: int = 20, has_wall: bool = False, step: int = 1):
         """Inits VirtualEnvironment with the Arduino and VR arguments."""
+
+        # Control the virtual environment through mouse movements.
+        self.__mouse = mouse
 
         # User's point of view in the enviroment.
         self.__elevation = elevation
 
         # Draw a wall in the corridor.
         self.__has_wall = has_wall
+
+        # Step defines the speed in the virtual environment.
+        self.__step = step
 
         # Virtual reality environment's resolution.
         self._width = 1280
@@ -172,6 +194,9 @@ class VirtualEnvironment:
         # not available, the user will control the virtual environment via mouse
         # movements.
         try:
+            if self.__mouse:
+                raise OSError("Using mouse instead of serial connection")
+
             self.__serial_connection = serial.Serial(
                 port=port,
                 baudrate=baudrate,
@@ -378,7 +403,7 @@ class VirtualEnvironment:
         )
 
         # Set the initial object position.
-        initial_xm = -30
+        initial_xm = 0
         initial_ym = self.__elevation / 2
         initial_zm = 9
         initial_position = pi3d.Position(initial_xm, initial_ym, initial_zm)
@@ -411,6 +436,9 @@ class VirtualEnvironment:
             # Read the current mouse position.
             _, my = mouse.position()
 
+            # Define the corridor speed.
+            my /= self.__step
+
             # Read the current man position.
             if self.__serial_connection is not None:
                 man_pos = self.__read_serial_data()
@@ -428,7 +456,7 @@ class VirtualEnvironment:
                 xm = self.__corridor_length + initial_xm
                 self.__save_serial_data(round_count, xm)
 
-            elif xm > self.__corridor_length - 20:
+            elif xm > self.__corridor_length - initial_xm:
                 round_count += 1
                 xm = initial_xm
                 self.__save_serial_data(round_count, xm)
@@ -461,7 +489,7 @@ class VirtualEnvironment:
 if __name__ == "__main__":
     args = build_argparser().parse_args()
     vr = VirtualEnvironment(
-        port=args.port, baudrate=args.baudrate,
-        elevation=args.elevation, has_wall=args.wall
+        mouse=args.mouse, port=args.port, baudrate=args.baudrate,
+        elevation=args.elevation, has_wall=args.wall, step=args.step
     )
     vr.run()
