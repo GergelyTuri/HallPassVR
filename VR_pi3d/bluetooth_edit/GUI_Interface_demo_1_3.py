@@ -4,10 +4,14 @@
 #Pic name is decoded (might cause error)
 
 #have done: 1)Output JSON  2)Optimize speed  3)Self check 
-#TobeDone:  1)Organize GUI look (add top/bottom look !) 2)More self check case to add e.g.
+
+#TobeDone:  1)More self check case to add e.g.
 # after delete pic in folder, during INIT, should detect which history pattern can't be used(and delete)
-#3) output Path JSON need to generate, extra note in the file might be need 
-#4) A new nuke.py file will be needed, when nuke, should let the element file to default 
+#2) output Path JSON need to generate, extra note in the file might be need 
+#3) A new nuke.py file will be needed, when nuke, should let the element file to default
+#4) Need to write generate case for PNG etc 
+#5) READ Button can be removed 
+#6) History Combination cursor needs to fix
 
 from   tkinter   import *
 from   PIL       import ImageTk, Image
@@ -45,7 +49,7 @@ Input             = Frame(root, bg = '#9714eb')
 
 string_dir = 'image/ELEMENT'
 
-extensions = [".jpg", ".png", ]
+extensions = [".jpg", ".png" ]
 
 ELEMENT_LIST = []
 ELEMENT_LIST = [f for f in os.listdir(string_dir) if os.path.splitext(f)[1] in extensions]
@@ -79,6 +83,7 @@ def INIT():
     
     global PROGRAM_RUN_TIME
     global PATTERN_DICT
+    global PATH_DICT
     global DROPBOX_PATTERN
     global DROPBOX_PATTERN_OLD
     
@@ -92,8 +97,20 @@ def INIT():
     global HIST_PATT_NAME_AB
     
     
+    global preStr_ceiling
+    global preStr_floor
+    global INPUT_READY
+    global PATH_READY
+    
+    global INPUT_EXPT_NAME
+    global INPUT_EXPT_LEN
+    
+    global INPUT_FLOOR_ELEMENT
+    global INPUT_CEILING_ELEMENT
+    
     ELEMENT_CONVERT_TABLE = {"NAME":[], "DECODE_NAME":[]} #directory store iofrmation about inital name and name after decode 
     PATTERN_DICT = {}
+    PATH_DICT = {}
     
     SEF_ELEMENT_G= []
     SEF_CHECK_DECODE_G = []
@@ -122,6 +139,16 @@ def INIT():
     SIZE_ELEMENT = (40,40)
     SIZE_PATTERN   = (300,30)
     SIZE_PATH    = (480,30)
+    
+    preStr_floor = ''
+    preStr_ceiling = ''
+    INPUT_READY = 0
+    PATH_READY = 0
+    
+    INPUT_FLOOR_ELEMENT = ''
+    INPUT_CEILING_ELEMENT = ''
+    INPUT_EXPT_NAME = ''
+    INPUT_EXPT_LEN = 0
     
     
     #address
@@ -162,7 +189,52 @@ def JSON_INIT():
             with open('image/HIST_PATTERN/PATTERN.json', 'w+') as f:
                 f.write(json_string)
                 f.write(' \n')
-                        
+            
+            
+            
+    path_format = 'PATH ' + 'Tue Nov 23 13:30:13 2021'
+    PATH_DICT[path_format] = {
+                'PATTERN1' : {
+                'element_decode': ['index1', 'index2', 'index3', 'index4'],
+                'element_name': ['IMG1', 'IMG2', 'IMG3', 'IMG4'],
+                        'element_num': ['NUM1', 'NUM2', 'NUM3', 'NUM4'],  
+                }, 
+                
+                'PATTERN2':{
+                        'element_decode': ['index1', 'index2', 'index3', 'index4'],
+                        'element_name': ['IMG1', 'IMG2', 'IMG3', 'IMG4'],
+                        'element_num': ['NUM1', 'NUM2', 'NUM3', 'NUM4'],       
+                },
+                
+                'PATTERN3':{
+                        'element_decode': ['index1', 'index2', 'index3', 'index4'],
+                        'element_name': ['IMG1', 'IMG2', 'IMG3', 'IMG4'],
+                        'element_num': ['NUM1', 'NUM2', 'NUM3', 'NUM4'], 
+                },
+                
+                'Note' : {},
+                
+               'INPUT':{
+                    'Floor': "IMG",
+                    'Ceiling': 'IMG',
+                    'Path Length': 'digit',
+                }
+                
+                #top/bottom need to add               
+        }
+    
+    json_string2 = json.dumps(PATH_DICT, indent= 4)         
+    with open('image/HIST_PATH/PATH.json', 'r') as f:
+        try:
+            data = json.loads(f.read())
+
+            if data:
+                #print("data exist")
+                pass
+        except JSONDecodeError:
+            with open('image/HIST_PATH/PATH.json', 'w+') as f:
+                f.write(json_string2)
+                f.write(' \n')                      
 
 
 def DROPBOX_PATTERN_STATE():
@@ -179,7 +251,7 @@ def DROPBOX_PATTERN_STATE():
     elif (string == "Pattern III"):
         DROPBOX_PATTERN = [0,0,1]
     
-    root.after(100, DROPBOX_PATTERN_STATE)
+    root.after(50, DROPBOX_PATTERN_STATE)
     
     
 def DROPBOX_PATTERN_LIST_CHECK():
@@ -207,6 +279,7 @@ def CANVAS():
     global FLAG_CANVAS_REFRESH
     global FLAG_CANVAS_PATH_ENABLE
     global CANVAS_PATH_ENABLE_CHECK
+    global PATH_READY
     
     FLAG_CANVAS_PATH_ENABLE = 0
     
@@ -225,7 +298,7 @@ def CANVAS():
     if FLAG_CANVAS_REFRESH == 1: #clean the canvas
         #print("clean canvas")
         FLAG_CANVAS_PATH_ENABLE = 0
-        
+        PATH_READY = 0 # when clean the canvas, PATH_READY has to be 0
         if pos == 1:
             CANVAS_PATTERN1.delete("all")
                     #print ("CANVAS 1 need to be clean")
@@ -269,6 +342,7 @@ def CANVAS():
             pass 
                             
     elif FLAG_CANVAS_REFRESH == 2: #
+        PATH_READY = 0 
         if pos == 1:
             #print ("CANVAS 1 need to be clean")
             img_path = ADDS_PATTERN + GEN_PATTERN_NAME +'.jpg'
@@ -312,8 +386,9 @@ def CANVAS():
                          
         #print(CANVAS_PATH_ENABLE_CHECK)
         if CANVAS_PATH_ENABLE_CHECK == [1,1,1]:
-            print("CANVAS for PATH should generate here")
+            #print("CANVAS for PATH should generate here")
             print(PATH_GEN_PATTERN_LOC)
+            PATH_READY = 1
             #IMG_RESIZE_CANVAS(img_path, SIZE_PATTERN, CANVAS_PATTERN3)
         else:
             pass                  
@@ -387,6 +462,9 @@ def CURRSEL_ELEMENT(self):
     #global CODENAME_LIST
     """ handle item selected event
     """
+    INDEX = 0
+    SELF_CHECK(INDEX)
+    
     # get selected indices
     index1 = LISTBOX_ELEMENT.curselection()
     index2 = LISTBOX_PATTERN.curselection()
@@ -398,6 +476,9 @@ def CURRSEL_ELEMENT(self):
     if index1:
         selected_indices1 = index1[0]
         #print ("selected_indices1: ", selected_indices1)
+        selected_indices1_path = ADDS_ELEMENT + ELEMENT_CONVERT_TABLE['NAME'][selected_indices1]
+        IMG_RESIZE_CANVAS(selected_indices1_path, (40,40), CANVAS_ELEMENT)
+        #print(selected_indices1_path)
     
     elif index2:
         selected_indices2 = index2[0]
@@ -427,8 +508,8 @@ def ONCLICK_ADD(): # Edit Need
         ADD_ELEMENT_NUM = LISTBOX_ELEMENT.curselection()[0] #store information about pic in number
         #print(ADD_ELEMENT_NUM)
         
-        if len(SEF_ELEMENT_G) < ONCADD_ELEMENT_G_LIM:
-            SEF_ELEMENT_G.append(ADD_ELEMENT_NUM)
+        if len(SEF_ELEMENT_G) < ONCADD_ELEMENT_G_LIM: # ONCADD_ELEMENT_G_LIM = 4
+            SEF_ELEMENT_G.append(ADD_ELEMENT_NUM) 
             
             SEF_CHECK_DECODE_G.append(ELEMENT_CONVERT_TABLE['DECODE_NAME'][ADD_ELEMENT_NUM])
             SEF_CHECK_NAME_G.append(ELEMENT_CONVERT_TABLE['NAME'][ADD_ELEMENT_NUM])
@@ -607,6 +688,8 @@ def ONCLICK_HIS_PATTERN_DELETE():
         time.sleep(5)
         quit() 
     #print(PATTERN_DICT)
+    
+    
 
 def ONCLICK_HIS_PATTERN_DELETEALL():
     INDEX = 7
@@ -642,6 +725,48 @@ def ONCLICK_HIS_PATTERN_DELETEALL():
     CANVAS_HIST_PATTERN.delete(ALL)
     
     
+def ONCLICK_INPUT_READ():
+    global INPUT_CEILING_ELEMENT
+    global INPUT_FLOOR_ELEMENT
+    global INPUT_EXPT_LEN
+    global INPUT_EXPT_NAME
+    
+    global INPUT_READY
+    
+    if ((INPUT_FLOOR_ELEMENT != '') and (INPUT_CEILING_ELEMENT != '')
+        and (INPUT_EXPT_NAME != '') and (INPUT_EXPT_LEN > 0)):
+        
+        INPUT_READY = 1
+        
+        print("INPUT_FLOOR_ELEMENT is ", INPUT_FLOOR_ELEMENT)
+        print("INPUT_CEILING_ELEMENT is ", INPUT_CEILING_ELEMENT)
+        print("INPUT_EXPT_NAME is ", INPUT_EXPT_NAME)
+        print("INPUT_EXPT_LEN is ", INPUT_EXPT_LEN)
+        
+        print("Input signal: ", INPUT_READY)
+    
+    else:
+        INPUT_READY = 0
+        print("INPUT INFORMATION MISSING")
+
+       
+def ONCLICK_START():
+    global INPUT_READY
+    global PATH_READY
+
+    #print("INPUT_FLOOR_ELEMENT is ", INPUT_FLOOR_ELEMENT)
+    #print("INPUT_CEILING_ELEMENT is ", INPUT_CEILING_ELEMENT)
+    #print("INPUT_EXPT_NAME is ", INPUT_EXPT_NAME)
+    #print("INPUT_EXPT_LEN is ", INPUT_EXPT_LEN)
+    
+    print("Input signal: ", INPUT_READY)
+    #print("PATH signal: ", PATH_READY ) 
+    
+    if ((INPUT_READY) and (PATH_READY)):
+        print("CANVAS for PATH should generate here")
+    else:
+        print("INPUT INFORMATION MISSING, VR CAN'T BE GENERATE")    
+               
     
 def ONCLICK_EXIT():
     starttime = time.time()
@@ -651,7 +776,83 @@ def ONCLICK_EXIT():
     global FLAG_subthread2
     
     root.destroy()
- 
+
+def INPUT():
+    #initial 
+    
+    global preStr_floor
+    global preStr_ceiling 
+    
+    global INPUT_FLOOR_ELEMENT
+    global INPUT_CEILING_ELEMENT
+    
+    global INPUT_EXPT_NAME
+    global INPUT_EXPT_LEN
+    
+    
+    global INPUT_READY
+    
+    currStr_floor = DROPBOX_CLICKED_FLOOR.get()
+    currStr_ceiling = DROPBOX_CLICKED_CEILING.get()
+    
+    try:
+        if ((preStr_floor != currStr_floor) or (preStr_ceiling != currStr_ceiling)):
+            #print("floor is ", currStr_floor)
+            #print("ceiling is ",currStr_ceiling )
+            
+            if (preStr_floor != currStr_floor):
+                img_path_floor = ADDS_ELEMENT + currStr_floor
+                #print("floor is ", img_path_floor) 
+                IMG_RESIZE_CANVAS(img_path_floor, (40,40), CANVAS_INPUT_FLOOR)
+                
+            elif (preStr_ceiling != currStr_ceiling):
+                img_path_ceiling = ADDS_ELEMENT + currStr_ceiling
+                #print("ceiling is ", img_path_ceiling)
+                IMG_RESIZE_CANVAS(img_path_ceiling, (40,40), CANVAS_INPUT_CEILING)
+
+            
+            preStr_floor = currStr_floor
+            preStr_ceiling = currStr_ceiling
+        else:
+            pass
+                
+    except: 
+        print("Error exists in Input fuction")
+        time.sleep(3)
+        quit()        
+
+    #print("floor is ", currStr_floor)
+    #print("ceiling is ",currStr_ceiling )
+    
+    INPUT_FLOOR_ELEMENT = currStr_floor
+    INPUT_CEILING_ELEMENT = currStr_ceiling
+    
+    
+    
+    #print("floor is ", INPUT_FLOOR_ELEMENT)
+    #print("ceiling is ",INPUT_CEILING_ELEMENT )
+    
+    #read length and  name
+    result_length = Input_Length.get()
+    result_name=Input_Name.get()
+    
+
+    INPUT_EXPT_NAME = result_name
+    INPUT_EXPT_LEN = int(result_length) 
+    
+    
+
+    #INPUT_READY 
+        
+    root.after(50, INPUT)
+    
+
+    
+    
+    
+    
+    
+
         
 def JSON_PROCESS(IMG_NAME, ELEMENT_DECODE, ELEMENT_NAME, ELEMENT_NUM):
     localtime  = time.ctime()
@@ -747,6 +948,8 @@ def SELF_CHECK(INDEX): #Edit Need
         case = "ONCLICK_HIS_PATTERN_DELETE"
     elif INDEX == 7:
         case = "ONCLICK_HIS_PATTERN_DELETEALL"
+    elif INDEX == 8:
+        case = "PATH_GENERATE"
         
     
     BOOL_SEF_CHECK_CORR = 0
@@ -763,14 +966,27 @@ def SELF_CHECK(INDEX): #Edit Need
 
     
     #self check
+    
+    #small case for cursor select
+    if (INDEX == 0):
+        filelist = glob.glob('image/ELEMENT/*.jpg')
+        len_img = len(filelist)
+        
+        if (len_img == LISTBOX_ELEMENT.size()):
+            pass 
+        else:
+            print("ERROR EXIST, PROGRAM CLOSE in 3S, small case i cursor select fail")
+            time.sleep(3)
+            quit()  
+        
     if (len(SEF_ELEMENT_G) == 0):
         if (len(SEF_CHECK_DECODE_G) == 0  and len(SEF_CHECK_NAME_G) == 0):
             BOOL_SEF_CHECK_CORR = 1
             pass
         
         else:
-            print("ERROR EXIST, PROGRAM CLOSE in 5S")
-            time.sleep(5)
+            print("ERROR EXIST, PROGRAM CLOSE in 3S")
+            time.sleep(3)
             quit()  
     else:
         for element in range(len(SEF_ELEMENT_G)):
@@ -780,17 +996,19 @@ def SELF_CHECK(INDEX): #Edit Need
             #print("CHECK_ELEMENT_G:", CHECK_ELEMENT_G)
             
             else:
-                print("ERROR EXIST, PROGRAM CLOSE in 5S")
-                time.sleep(5)
+                print("ERROR EXIST, PROGRAM CLOSE in 3S")
+                time.sleep(3)
                 quit()
             
         if CHECK_ELEMENT_G == SEF_ELEMENT_G:
             BOOL_SEF_CHECK_CORR = 1
             pass
         else:
-            print("ERROR EXIST, PROGRAM CLOSE in 5S")
-            time.sleep(5)
+            print("ERROR EXIST, PROGRAM CLOSE in 3S")
+            time.sleep(3)
             quit()
+            
+    
             
     #self check for gen function
     if ((INDEX == 4) or (INDEX == 6) or (INDEX == 0) or (INDEX == 7)):
@@ -812,7 +1030,7 @@ def SELF_CHECK(INDEX): #Edit Need
                         if (len_img == len_json -1):
                             pass
                         else:
-                            print("ERROR: SIZE of the IMG folder not match with JSON")
+                            print("ERROR: SIZE of the IMG folder not match with JSON, PROGRAM CLOSE in 3S")
                             time.sleep(3)
                             quit()
                 else:
@@ -838,32 +1056,63 @@ def SELF_CHECK(INDEX): #Edit Need
                                 pass
                         
                         if (error_count != 0):    
-                            print("Special case: self check JSON vs .jpg File Error Count:", error_count)
+                            print("Special case: self check JSON vs .jpg File Error Count: ", error_count)
+                            time.sleep(3)
                             quit()
                                                 
                         if error_count:
-                            print("ERROR exists when reading JSON or .jpg file")
+                            print("ERROR exists when reading JSON or .jpg file, PROGRAM CLOSE in 3S")
+                            time.sleep(3)
                             quit()                           
                     else:
-                        print("ERROR exists when reading JSON or .jpg file")
+                        print("ERROR exists when reading JSON or .jpg file, PROGRAM CLOSE in 3S")
+                        time.sleep(3)
                         quit()            
             else: #means empty, should at least have format after JSON init 
-                print("ERROR exits when reading JSON file")
-                #quit()
+                print("ERROR exits when reading JSON file, PROGRAM CLOSE in 3S")
+                time.sleep(3)
+                quit()
                 
         except JSONDecodeError:
-            print("ERROR exits when reading JSON file")
+            print("ERROR exits when reading JSON file, PROGRAM CLOSE in 3S")
+            time.sleep(3)
+            quit()
             
     if INDEX == 5:
         SEP_PATTERN_NAME = re.findall('..',HIST_PATT_NAME_AB)
         #print(SEP_PATTERN_NAME)
         if SEP_PATTERN_NAME == SEF_CHECK_DECODE_G:
             print("Special case: self check on UPLOAD success")
-
+           
+        else:
+           print("ERROR exits when decoding JSON file, PROGRAM CLOSE in 3S")
+           time.sleep(3)
+           quit() 
+           
+    if ((INDEX == 8) or (INDEX == 0)):
+        #pass
+        with open('image/HIST_PATH/PATH.json', 'r') as f:
+            HIST_PATH = json.loads(f.read())
+            len_json = len(HIST_PATH)
+               
+        if len_json == 1:
+            if 'PATH Tue Nov 23 13:30:13 2021' not in HIST_PATH:
+                print("ERROR exits when reading JSON file, PROGRAM CLOSE in 3S")
+                time.sleep(3)
+                quit()
+            else:
+                pass
             
         else:
-           print("ERROR exits when decoding JSON file") 
-        
+            filelist = glob.glob('image/HIST_PATH/*.jpg')
+            len_img = len(filelist) 
+            
+            if (len_img == len_json -1):
+                pass
+            else:
+                print ("ERROR exist in PATH folder, PROGRAM CLOSE in 3S") 
+                time.sleep(3)         
+                quit()
            
     print("                                                            ")
     print("               SELF CHECK SUCCESSFUL                        ")
@@ -872,11 +1121,13 @@ def SELF_CHECK(INDEX): #Edit Need
             
    
 # --- DEFAULT ---
-canvas = Canvas(ListFrame, width = 65, height = 40, background= '#6251ae')
+canvas = Canvas(ListFrame, width = 50, height = 40)
 canvas.grid(row = 5, column = 0, columnspan = 1, sticky = W)
+DEFAULTPIC = 'Default.jpg'
+IMG_RESIZE_CANVAS(DEFAULTPIC, (65, 40), canvas)
 
-canvas2 = Canvas(ListFrame, width = 40, height = 40, background= '#51c03f')
-canvas2.grid(row = 5, column = 1, columnspan = 1, sticky = W)
+CANVAS_ELEMENT = Canvas(ListFrame, width = 35, height = 35) # element
+CANVAS_ELEMENT.grid(row = 5, column = 1, columnspan = 1, sticky = W)
 
 #img_resize_canvas("default.jpg", (65,40), canvas)
 
@@ -911,8 +1162,8 @@ Button_Exit       = Button(root,        text = "Exit",       width = 10, height 
 Button_Upload     = Button(HistoryComb, text = "Upload",     width = 7,  height = 2, command= ONCLICK_UPLOAD)
 Button_Delete_hi  = Button(HistoryComb, text = "Delete",     width = 7,  height = 2, command= ONCLICK_HIS_PATTERN_DELETE)
 Button_Del_hi_all = Button(HistoryComb, text = "Delete All", width = 10, height = 2, command= ONCLICK_HIS_PATTERN_DELETEALL)
-Button_Input      = Button(Input,       text = "Read",       width = 7,  height = 2)
-Button_Start      = Button(root,        text = "Start",      width = 10, height = 2)
+Button_Input      = Button(Input,       text = "Read",       width = 7,  height = 2, command= ONCLICK_INPUT_READ)
+Button_Start      = Button(root,        text = "Start",      width = 10, height = 2, command= ONCLICK_START)
 #lambda: [onClick_Start(),os.system('python Corridor_test_5_20.py')]
 
 Button_ADD.grid       (row = 5,  column = 2,   sticky = N)
@@ -984,15 +1235,15 @@ CANVAS_PATTERN2        = Canvas(CombinationFrame, width = 300, height = 30)
 CANVAS_PATTERN3        = Canvas(CombinationFrame, width = 300, height = 30)
 canvas_path            = Canvas(CombinationFrame, width = 480, height = 30)
 CANVAS_HIST_PATTERN    = Canvas(HistoryComb,      width = 300, height = 30)
-CANVAS_INPUT_FLOOR     = Canvas(Input,            width = 35,  height = 35, bg = 'green')
-CANVAS_INPUT_CEILING   = Canvas(Input,            width = 35,  height = 35, bg = "yellow")
+CANVAS_INPUT_FLOOR     = Canvas(Input,            width = 35,  height = 35)
+CANVAS_INPUT_CEILING   = Canvas(Input,            width = 35,  height = 35)
 
-CANVAS_PATTERN1.grid       (row = 0, column = 1, columnspan = 6,  sticky = W)
-CANVAS_PATTERN2.grid       (row = 1, column = 1, columnspan = 6,  sticky = W)
-CANVAS_PATTERN3.grid       (row = 2, column = 1, columnspan = 6,  sticky = W)
-canvas_path.grid        (row = 7, column = 5, columnspan = 15, sticky = W)
-CANVAS_HIST_PATTERN.grid(row = 4, column = 0, columnspan = 6,  sticky = W, padx = 10, ipady = 5)
-CANVAS_INPUT_FLOOR.grid(row = 0, column = 8)
+CANVAS_PATTERN1.grid     (row = 0, column = 1, columnspan = 6,  sticky = W)
+CANVAS_PATTERN2.grid     (row = 1, column = 1, columnspan = 6,  sticky = W)
+CANVAS_PATTERN3.grid     (row = 2, column = 1, columnspan = 6,  sticky = W)
+canvas_path.grid         (row = 7, column = 5, columnspan = 15, sticky = W)
+CANVAS_HIST_PATTERN.grid (row = 4, column = 0, columnspan = 6,  sticky = W, padx = 10, ipady = 5)
+CANVAS_INPUT_FLOOR.grid  (row = 0, column = 8)
 CANVAS_INPUT_CEILING.grid(row = 1, column = 8)
 
 #canvas_path = Canvas(root, )
@@ -1045,6 +1296,7 @@ root.wait_visibility()
 #subthread2.start()
 root.after(0, DROPBOX_PATTERN_LIST_CHECK)
 root.after(0, CANVAS)
+root.after(0, INPUT)
 
 root.mainloop()
 
