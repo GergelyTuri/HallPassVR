@@ -60,76 +60,11 @@
                 "NUM4"
             ]
         },
-        "Note": {}
-    },
-    "PATH Tue Nov 23 17:52:18 2021": {
-        "rdrdrdrd": {
-            "ELEMENT_DECODE_INDEX": [
-                "rd",
-                "rd",
-                "rd",
-                "rd"
-            ],
-            "ELEMENT_NAME_IMG": [
-                "red.jpg",
-                "red.jpg",
-                "red.jpg",
-                "red.jpg"
-            ],
-            "ELEMENT_NUM_DIG": [
-                10,
-                10,
-                10,
-                10
-            ],
-            "GENE_TIME": "Tue Nov 23 16:17:34 2021"
-        },
-        "crcrcrcr": {
-            "ELEMENT_DECODE_INDEX": [
-                "cr",
-                "cr",
-                "cr",
-                "cr"
-            ],
-            "ELEMENT_NAME_IMG": [
-                "chess_pattern_5x5_sparser.jpg",
-                "chess_pattern_5x5_sparser.jpg",
-                "chess_pattern_5x5_sparser.jpg",
-                "chess_pattern_5x5_sparser.jpg"
-            ],
-            "ELEMENT_NUM_DIG": [
-                4,
-                4,
-                4,
-                4
-            ],
-            "GENE_TIME": "Tue Nov 23 15:31:58 2021"
-        },
-        "werdywbe": {
-            "ELEMENT_DECODE_INDEX": [
-                "we",
-                "rd",
-                "yw",
-                "be"
-            ],
-            "ELEMENT_NAME_IMG": [
-                "white.jpg",
-                "red.jpg",
-                "yellow.jpg",
-                "blue.jpg"
-            ],
-            "ELEMENT_NUM_DIG": [
-                11,
-                10,
-                12,
-                1
-            ],
-            "GENE_TIME": "Tue Nov 23 17:48:25 2021"
-        },
-        "Note": [
-            1,
-            1,
-            1
-        ]
+        "Note": {},
+        "INPUT": {
+            "Floor": "IMG",
+            "Ceiling": "IMG",
+            "Path Length": "digit"
+        }
     }
-}
+} 
