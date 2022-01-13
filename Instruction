@@ -1,0 +1,17 @@
+Instruction:
+
+1) Download and unzip NYSPI from https://github.com/GergelyTuri/mouseVR
+
+2) Follow https://pi3d.github.io install pi3d and download pi3d_demo from https://github.com/pi3d
+
+3) Copy and Paste NYSPI_project_bluetooth and NYSPI_project_wired under pi3d_demos
+
+4) Running: under pi3d_demos/NYSPI_project_bluetooth/Bluetooth_Version $ python3 GUI_INTERFACE.py (Bluetooth Version)
+			under pi3d_demos/NYSPI_project_wired/Wired_Version $ python3 GUI_INTERFACE.py (GPIO ,TX/RX Version)
+			
+			PS: individual run : python3 NUKE.py     ----->    nuke file, factory reset
+								 python3 VR_CORRIDOR_BUILD_BLUETOOTH.py
+								 python3 VR_OPEN
+
+NOTE: 1) Users add Elements adds under image/ELEMENT
+	  2) image/SOURCE should not be editted
