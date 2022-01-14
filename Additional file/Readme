@@ -6,11 +6,4 @@ This folder include important files during development
                                                    
 4) Arduno-encoder.ino: Rotary Encoder Code Used for Arduino Uno (Without library). 
 5) ESP32_encoder.ino : Rotary Encoder Code Used for ESP32 (Only include GPIO Serial Communication).
-6) corridor_testbench: This file includes files testing functionality of corridor 
-            Important files included: 1) Corridor_test_5_20.py/Corridor_test_6_1.py: File used for testing. 
-                                      2) corridor_file.txt: Include list of corresponding pattern number of corridor generated 
-                                         by corridor_testbench_gen.py.
-                                      3) corridor_testbench_gen.py: Used to generated number list for testing.
-                                      4) corridor_testbench.py: Compile file.
-              
-              How to Compile:         1) In terminal: python3 corridor_testbench.py
+
