@@ -2,7 +2,7 @@ Instruction:
 
 1) Download and unzip NYSPI from https://github.com/GergelyTuri/mouseVR/tree/master/VR_pi3d
 
-2) Follow https://pi3d.github.io install pi3d and download pi3d_demo from https://github.com/pi3d
+2) Follow https://pi3d.github.io install pi3d and download pi3d_demo from https://github.com/pi3d/pi3d_demos.git
 
 3) Copy and Paste NYSPI_project_bluetooth and NYSPI_project_wired under pi3d_demos
 
