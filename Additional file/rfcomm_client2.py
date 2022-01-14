@@ -47,7 +47,7 @@ def rx_and_echo():
 					else:
 						pass
 		except socket.error as e: # When buffer empty, break from the while loop
-			if e.args[0] == errno.EWOULDBLOCK:
+			if e.args[0] == errno.EWOULDBLOCK:  
 				#prit ("EWOULDBLOCK")
 				break
 			else:
