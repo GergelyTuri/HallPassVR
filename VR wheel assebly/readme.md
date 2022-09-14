@@ -16,4 +16,5 @@
 | axle | cat# | McMasterr Carr |
 | optical breadboard | cat# | Throlabs|
 
-
+#### Final Assembly
+![Final assembly](../media/VR_assembly.png "Final assembly")
