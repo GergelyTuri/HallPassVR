@@ -1,5 +1,8 @@
 {
     "files.exclude": {
         "**/.git": false
-    }
+    },
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "master"
+    ]
 }
