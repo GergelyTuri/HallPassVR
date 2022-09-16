@@ -17,4 +17,6 @@
 | optical breadboard | cat# | Throlabs|
 
 #### Final Assembly
+#### TODO: 
+- [ ] @HuongHo42 getting a nicer image here  
 ![Final assembly](../media/VR_assembly.png "Final assembly")
