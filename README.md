@@ -1,6 +1,6 @@
 # mouseVR
 ## Head-fixed Mice Virtual Reality System   
-date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
+@GergelyTuri adding deployment/update time
 
 This project aims to support naturalistic research about how mice cranial nerves respoonse when running under visual stimuli (espeically gratings or dot stimuli). Implementing VR environment can create a more realistic environment for experiment. The overall system will be used as a part for further research with several behavirol boxes. The main parts for this project are: 1) designing a VR environment which can synchronize the mice movement to the virtual corridor with low latency. 2) Create GUI to adjust, generate and store information for corridor. The prototype virtual corridor has been done with basic functions. The most recent demo videos can be found [here]():  
 
