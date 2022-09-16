@@ -1,50 +1,59 @@
 # mouseVR
-Head-fixed Mice Virtual Reality System   Update: 7/1/2021
+## Head-fixed Mice Virtual Reality System   
+date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
 
-This project aims to support naturalistic research about how mice cranial nerves respoonse when running under visual stimuli (espeically gratings or dot stimuli). Implementing VR environment can create a more realistic environment for experiment. The overall system will be used as a part for further research with several behavirol boxes. The main parts for this project are: 1) designing a VR environment which can synchronize the mice movement to the virtual corridor with low latency. 2) Create GUI to adjust, generate and store information for corridor. The prototype virtual corridor has been done with basic functions. The most recent demo videos can be found here: https://drive.google.com/drive/u/2/folders/1Ucv_41gNv25MAfak_pyqquLuZ15v62hw 
+This project aims to support naturalistic research about how mice cranial nerves respoonse when running under visual stimuli (espeically gratings or dot stimuli). Implementing VR environment can create a more realistic environment for experiment. The overall system will be used as a part for further research with several behavirol boxes. The main parts for this project are: 1) designing a VR environment which can synchronize the mice movement to the virtual corridor with low latency. 2) Create GUI to adjust, generate and store information for corridor. The prototype virtual corridor has been done with basic functions. The most recent demo videos can be found [here]():  
 
-HARDWARE: 
-1) Arduino Nano: Tracking and converting mice movement on treadmill to serial data. 
-2) Raspberry Pi 4: Building and simulating the virtual reality environment. 
-3) TI DLPDLCR2010EVM: Projector.
-4) ESP32: Run as the rotary encoder and bluetooth/WiFi for further development.
-
-
-
-SOFTWARE: 
-1) Python: Used for designing the corridor. The mainly used language for the Project is python. 
-2) Linux: OS for Raspberry Pi.
-3) tkinter: Designing the user interface.
-
-
-WHAT WE HAVE DONE: 
-1) We have done building the main part for the system which can simultaneously run and show the virtual reality environment on the computer display.
-2) Finish the prototype GUI.
-3) Test the whole system with several testbenches.
+## HARDWARE: 
+1. Arduino Nano: Tracking and converting mice movement on treadmill to serial data. 
+2. Raspberry Pi 4: Building and simulating the virtual reality environment. 
+3. TI DLPDLCR2010EVM: Projector.
+4. ESP32: Run as the rotary encoder and bluetooth/WiFi for further development.
 
 
 
-WHAT WE CURRENTLY WORKING ON: 
-1) Replace Arduino with ESP32 for further development.
-2) Try communicating Android Studio App with gyroscape data captured with VR environment, mimicking rotating movement of mice head.
+## SOFTWARE: 
+1. Python: Used for designing the corridor. The mainly used language fr the Project is python. 
+2. Linux: OS for Raspberry Pi.
+3. tkinter: Designing the user interface.
 
 
+### WHAT WE HAVE DONE: 
+1. We have done building the main part for the system which can simultaneously run and show the virtual reality environment on the computer display.
+2. Finish the prototype GUI.
+3. Test the whole system with several testbenches.
+
+
+
+### WHAT WE CURRENTLY WORKING ON: 
+1. Replace Arduino with ESP32 for further development.
+2. Try communicating Android Studio App with gyroscape data captured with VR environment, mimicking rotating movement of mice head.
                 
                 
-FUTURE PLAN: 
-1) Optimize durability and accuracy of the system.
-2) Adding RFID sensor increasing accuracy of synchronization.
-3) Implement algorithm which can stablize the totally brightness of the whole virtual reality environment, either OpenCV or FPGA.
+### FUTURE PLANS: 
+1. Optimize durability and accuracy of the system.
+2. Adding RFID sensor increasing accuracy of synchronization.
+3. Implement algorithm which can stablize the totally brightness of the whole virtual reality environment, either OpenCV or FPGA.
 
 
 
 
-IMPORTANT: 
-How to setup and run the demo: 
-1) Download, unzip the python file demo_7_2.zip file under MouseVR/demo_complete to pi3d/pi3d_demo. 
-2) Run ```python3 GUI_Interface_demo_7_2.py```  to open GUI and run the VR.
-3) nuke.py: this file is used for cleaning all history combination/path file and other data. Run: ```python3 nuke.py```
-4) Corridor_demo_7_2.py: Individual VR corridor. Run: ```python Corridor_demo_7_2.py```
+## Initializing VR environment (demo): 
+
+1. Download, unzip the python file demo_7_2.zip file under MouseVR/demo_complete to pi3d/pi3d_demo. 
+2. To open GUI and run the VR.
+ ```bash
+python3 GUI_Interface_demo_7_2.py
+ ```
+To cleaning all history, pattern combinations, file paths and other data.
+
+```bash
+python3 nuke.py
+ ```
+Corridor_demo_7_2.py: Individual VR corridor.
+ ```bash
+python Corridor_demo_7_2.py
+ ```
 
 GUI: 
 ![GUI](/media/GUI/GUI.jpg)
