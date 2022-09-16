@@ -6,8 +6,12 @@ The design is based on the screen developed in [Chris Harvey's lab](https://gith
 
 | material | description | source |
 | -------- | ----------- | ------ |
-| DLP® LightCrafter™ Display 2010 Evaluation Module | DLPDLCR2010EVM |Texas Instrument |
-| acrylic mirror [^1] | cheap | XXXX |
+| DLP® LightCrafter™ Display 2010 Evaluation Module [^1] | DLPDLCR2010EVM |Texas Instrument |
+| acrylic mirror [^2] | cheap | XXXX |
 |plastic sheets| as per the design files| e.g., [Canal Plastic Center](https://www.canalplastic.com/)| 
 
-[^1]: Crispier image qulaity can be achieved by investing in a more expensive [front surface mirror](https://firstsurfacemirror.com/) 
+[^1]: at the time of the writing, this module was unavailable at TI's website. We probably recommend DLPDLCR230NPEVM.
+[^2]: Crispier image qulaity can be achieved by investing in a more expensive [front surface mirror](https://firstsurfacemirror.com/) 
+
+
+@HuongHo42 - we need the desing files for the final box in this folder
