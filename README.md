@@ -1,43 +1,34 @@
 # mouseVR
 ## Head-fixed Mice Virtual Reality System   
-date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
+@GergelyTuri adding deployment/update time
 
-This project aims to support naturalistic research about how mice cranial nerves respoonse when running under visual stimuli (espeically gratings or dot stimuli). Implementing VR environment can create a more realistic environment for experiment. The overall system will be used as a part for further research with several behavirol boxes. The main parts for this project are: 1) designing a VR environment which can synchronize the mice movement to the virtual corridor with low latency. 2) Create GUI to adjust, generate and store information for corridor. The prototype virtual corridor has been done with basic functions. The most recent demo videos can be found [here]():  
+This project aims to support naturalistic research about how mice cranial nerves respoonse when running under visual stimuli (espeically gratings or dot stimuli). Implementing VR environment can create a more realistic environment for experiment. The overall system will be used as a part for further research with several behavirol boxes. The main parts for this project are: 1) designing a VR environment which can synchronize the mice movement to the virtual corridor with low latency. 2) Create GUI to adjust, generate and store information for corridor. The prototype virtual corridor has been done with basic functions. The most recent demo videos can be found [here](https://www.youtube.com/watch?v=iCfhJT3dYIo):  
+
+[![Mouse on wheel](/media/mouse_on_wheel_small.PNG)](https://www.youtube.com/watch?v=iCfhJT3dYIo "Mouse on wheel")
 
 ## HARDWARE: 
-1. Arduino Nano: Tracking and converting mice movement on treadmill to serial data. 
+1. ESP32: Tracking and converting mice movement on treadmill to serial data. 
 2. Raspberry Pi 4: Building and simulating the virtual reality environment. 
-3. TI DLPDLCR2010EVM: Projector.
-4. ESP32: Run as the rotary encoder and bluetooth/WiFi for further development.
-
-
+3. Projector: TI DLPDLCR2010EVM
 
 ## SOFTWARE: 
 1. Python: Used for designing the corridor. The mainly used language fr the Project is python. 
 2. Linux: OS for Raspberry Pi.
 3. tkinter: Designing the user interface.
 
-
 ### WHAT WE HAVE DONE: 
 1. We have done building the main part for the system which can simultaneously run and show the virtual reality environment on the computer display.
 2. Finish the prototype GUI.
 3. Test the whole system with several testbenches.
 
-
-
 ### WHAT WE CURRENTLY WORKING ON: 
 1. Replace Arduino with ESP32 for further development.
-2. Try communicating Android Studio App with gyroscape data captured with VR environment, mimicking rotating movement of mice head.
-                
+2. Try communicating Android Studio App with gyroscape data captured with VR environment, mimicking rotating movement of mice head.                
                 
 ### FUTURE PLANS: 
 1. Optimize durability and accuracy of the system.
 2. Adding RFID sensor increasing accuracy of synchronization.
 3. Implement algorithm which can stablize the totally brightness of the whole virtual reality environment, either OpenCV or FPGA.
-
-
-
-
 ## Initializing VR environment (demo): 
 
 1. Download, unzip the python file demo_7_2.zip file under MouseVR/demo_complete to pi3d/pi3d_demo. 
