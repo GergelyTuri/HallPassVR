@@ -5,7 +5,8 @@ Our headpost design consists of two interlocking manifolds for securing a metal 
 | material | description | source |
 | -------- | ----------- | ------ |
 | head post holder | custom 3D print | |
-|set screws| M5 x 6 | McMasterr Carr|
+|set screws| M2.5 x 6 | McMasterr Carr|
+|thumb screws|M5.5 x 6| McMasterr Carr|
 |goniometers| Edmund Optics | 66-526, 66-527 |
 | metal headposts | Stainless 304 Annealed| [eMachineShop](https://www.emachineshop.com/)|
 | optical posts (2) | 1/2" series| Thorlabs|

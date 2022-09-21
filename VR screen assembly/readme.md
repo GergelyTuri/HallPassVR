@@ -8,7 +8,7 @@ The design is based on the screen developed in [Chris Harvey's lab](https://gith
 | -------- | ----------- | ------ |
 | DLP® LightCrafter™ Display 2010 Evaluation Module [^1] | DLPDLCR2010EVM |Texas Instrument |
 |front surface mirror|114 mm x 418 mm|[first surface mirror](https://firstsurfacemirror.com/)|
-| acrylic mirror [^2] | cheap alternative| XXXX |
+|Silver Mirror Acrylic Sheet [^2] | cheap alternative| e.g., [Canal Plastics Center](https://www.canalplastic.com/) |
 |plastic sheets| as per the design files| e.g., [Canal Plastic Center](https://www.canalplastic.com/)|
 |24" x 48" Matte white diffusion paper|screen material|e.g., [this](https://www.bhphotovideo.com/c/product/44042-REG/Rosco_RS302611_3026_Filter_Tough.html)| 
 
