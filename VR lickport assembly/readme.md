@@ -1,6 +1,6 @@
 # Instructions for assembling the lickport
 
-We developed a capacity-based lickport which is highly sensitive and easy to implement. Note: this type of lick sensor can introduce a significant amount of electric noise when the mouse licks the water spout which could be disadvantageous for electrophysiological recordings. Please contact @claylacefield or @GergelyTuri for alternative solutions. 
+We developed a capacitive touch sensor lick port which is highly sensitive and easy to implement. A metal water spout is connected to ESP32 board which detects lick touch events and delivers liquid rewards via a solenoid valve actuated by an H-bridge circuit on the OpenMaze OMesp32 PCB. The sensitivity of the port can be tuned. Note: this type of lick sensor can introduce a significant amount of electric noise when the mouse licks the spout which could be disadvantageous for electrophysiological recordings. Please contact the authors for alternative solutions using IR beam break lick detection. 
 
 | material | description | source |
 | -------- | ----------- | ------ | 
