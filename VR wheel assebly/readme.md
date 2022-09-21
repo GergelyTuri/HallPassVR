@@ -15,6 +15,7 @@
 | ESP32 | cat# | Digikey |
 | axle | cat# | McMasterr Carr |
 | optical breadboard | cat# | Throlabs|
+|Arduino IDE| uploading ino file to ESP32|[download link](https://www.arduino.cc/en/software) |
 
 #### Final Assembly
 #### TODO: 
