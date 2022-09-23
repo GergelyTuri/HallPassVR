@@ -1,4 +1,4 @@
-# mouseVR
+# HallPassVR
 ## Head-fixed Mice Virtual Reality System   
 @GergelyTuri adding deployment/update time
 
