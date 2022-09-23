@@ -1,4 +1,4 @@
-# mouseVR
+# HallPassVR
 ## Head-fixed Mice Virtual Reality System   
 
 This project aims to support naturalistic research about how mice cranial nerves respoonse when running under visual stimuli (espeically gratings or dot stimuli). Implementing VR environment can create a more realistic environment for experiment. The overall system will be used as a part for further research with several behavirol boxes. The main parts for this project are: 1) designing a VR environment which can synchronize the mice movement to the virtual corridor with low latency. 2) Create GUI to adjust, generate and store information for corridor. The prototype virtual corridor has been done with basic functions. The most recent demo videos can be found [here](https://www.youtube.com/watch?v=iCfhJT3dYIo):  
@@ -28,7 +28,8 @@ This project aims to support naturalistic research about how mice cranial nerves
 1. Optimize durability and accuracy of the system.
 2. Adding RFID sensor increasing accuracy of synchronization.
 3. Implement algorithm which can stablize the totally brightness of the whole virtual reality environment, either OpenCV or FPGA.
-## Initializing VR environment (demo): 
+## Quickstart:
+### Initializing VR environment (demo): 
 
 1. Download, unzip the python file demo_7_2.zip file under MouseVR/demo_complete to pi3d/pi3d_demo. 
 2. To open GUI and run the VR.
@@ -73,4 +74,3 @@ Relative paper:
 6. https://pubmed.ncbi.nlm.nih.gov/32149601/
 7. https://www.janelia.org/open-science/large-spherical-treadmill-rodents
 8. https://www.ti.com/store/ti/en/p/product/?p=DLPDLCR2010EVM
-
