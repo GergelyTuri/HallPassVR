@@ -29,7 +29,8 @@ This project aims to support naturalistic research about how mice cranial nerves
 1. Optimize durability and accuracy of the system.
 2. Adding RFID sensor increasing accuracy of synchronization.
 3. Implement algorithm which can stablize the totally brightness of the whole virtual reality environment, either OpenCV or FPGA.
-## Initializing VR environment (demo): 
+## Quickstart:
+### Initializing VR environment (demo): 
 
 1. Download, unzip the python file demo_7_2.zip file under MouseVR/demo_complete to pi3d/pi3d_demo. 
 2. To open GUI and run the VR.
