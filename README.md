@@ -3,7 +3,7 @@
 
 We developed an inexpensive, single board computer-based, easy-to-use setup for investigation of mouse spatial learning behavior using a visual virtual reality (VR) environment. This system uses a network of microcontrollers (ESP32) and a Raspberry Pi single-board computer to display a virtual linear track to a headfixed mouse running on a wheel. Along with a custom software package written in Python and C++ to generate parameterized virtual environments, this methodology allows researchers the design of various spatial navigation-based experiments to study neural circuits in the brain underlying spatial behaviors. [Example video here](https://www.youtube.com/watch?v=iCfhJT3dYIo):  
 
-![Mouse on wheel](/media/mouse_on_wheel_small.PNG)]
+![Mouse on wheel](/media/mouse_on_wheel_small.PNG)
 
 ## Main hardware requriments: 
 1. _ESP32 microcontrollers_ to track and convert mouse movement on a treadmill or wheel to serial data and to control other harware elements (lick spout for reward delivery).
