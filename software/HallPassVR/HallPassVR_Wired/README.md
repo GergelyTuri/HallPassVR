@@ -2,9 +2,9 @@
 ## Virtual reality system for head-fixed mouse experiments. 
 
 Main python files:
-1. GUI_INTERFACE.py: main GUI script (can rename without consequence)
+1. HallPassVR_GUI.py: main GUI script (can rename without consequence)
 2. NUKE.py: deletes history or something like that?
-3. VR_CORRIDOR_BUILD_WIRED.py: main VR run script
+3. HallPassVR_wired.py: main VR run script
 4. VR_OPEN.py: creates VR on second screen with TK (this is run by HallPassVR_GUI.py, and in turn runs HallPassVR_wired.py)
 
 /HallPassVR_wired/image folder contains image files for use with VR
