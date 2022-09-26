@@ -19,4 +19,4 @@ The design is based on the screen developed in [Chris Harvey's lab](https://gith
 <img src="Screen Assemblies.png" alt="Screen" style="width:500px;"/>
 
 ### Final look:
-<img src="Screen.png" alt="Screen" style="width:500px;"/>
+<img src="Wheel_and_Screen_2D v1-1.png" alt="Screen" style="width:500px;"/>
