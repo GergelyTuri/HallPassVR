@@ -7,7 +7,7 @@ We use XXX" thick, clear acrylic to cut out the wheel parts found in `runningWhe
 
 | material | description | source |
 | -------- | ----------- | ------ |
-| acrylic sheet | XXX mm thick | e.g., Canalplastic|
+| acrylic sheet, laser cutting template[^1]  | XXX mm thick | e.g., Canalplastic|
 | acrylic cylinder | 6" diam, 3" thick | ??? |
 |acrylic cement|gluing the parts|e.g., [this](https://www.amazon.com/SCIGRIP-10315-Acrylic-Cement-Low-VOC/dp/B003HNFLMY)|
 | ball bearing | XXX | McMasterr Carr |
@@ -18,6 +18,8 @@ We use XXX" thick, clear acrylic to cut out the wheel parts found in `runningWhe
 |shaft sleeve thingy|keeping the axis in the center of the wheel|????|
 
 #### Wheel laser cutting template:
+[^1]:The same template is atteched here with .ai, .dxf and .svg extensions. 
+
 <img src="runningWheel_6inCyl_sideMount_JoVE_091422a.png" alt="wheel" style="width:500px;"/>
 
 #### Final Assembly
