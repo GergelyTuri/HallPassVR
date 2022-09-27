@@ -30,7 +30,7 @@ then uncomment `config_hdmi_boost=4`. Save, reboot the Raspberry Pi.
 5. Download and install Processing IDE from github.com/processing/processing4/releases (e.g. processing-4.0.1-linux-arm32.tgz)
 6. In the terminal
 ```bash
-sudo pip3 install pillow –upgrade
+sudo pip3 install pillow –-upgrade
 ```
 7. Then, 
 ```bash
