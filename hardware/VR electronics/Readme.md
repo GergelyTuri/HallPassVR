@@ -7,9 +7,11 @@ Files in `/PCBs` can get manufatured with companies specialized to PCB productio
 | material | description | source |
 | -------- | ----------- | ------ |
 | Raspberry Pi 4 model B | single-board computer | e.g., raspberrypi.com, adafruit.com |
-| rotary encoder | cat# | Digikey |
+| rotary encoder | ENS1J-B28-L00256L | digikey.com[^1] |
 |ESP32 devKitC v4 | microcontroller (x2)| e.g., [Amazon.com](https://www.amazon.com/s?k=ESP32&crid=ZCZ3J597DJO9&sprefix=esp32%2Caps%2C94&ref=nb_sb_noss_1)|
 |OpenMaze OMwESP32 shield| custom design | see: `/PCBs` folder |
+
+[^1]: Alternative sources: amazon.com, mouser.com, DigiPart, etc.
 
 ## Installation instructions for Raspberry Pi:
 ### Configure RaspberryPi 4 model B 

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: >-
+  HallPassVR - An Open-Source System for Measurement
+  of Spatial Learning in Head-restrained Mice
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Gergely
+    family-names: Turi
+    email: gt2253@cumc.columbia.edu
+    affiliation: New York State Psychiatric Institute
+    orcid: 'https://orcid.org/0000-0001-5651-9459'
+  - given-names: Clay
+    family-names: Lacefield
+    email: col8@cumc.columbia.edu
+    affiliation: New York State Psychiatric Institute
+    orcid: 'https://orcid.org/0000-0001-5721-434X'
+# TODO add article when it's published. See: https://citation-file-format.github.io/cff-initializer-javascript/#/
