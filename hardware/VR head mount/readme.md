@@ -14,5 +14,3 @@ Our headpost design consists of two interlocking manifolds for securing a metal 
 
 ### Final look:
 <img src="./Headpost Clamp/Headpost Clamp_model.png" alt="clamp" style="width:400px;"/>
-
-<img src="./Headpost Clamp/Headpost and Clamp.png" alt="clamp" style="width:500px;"/>
