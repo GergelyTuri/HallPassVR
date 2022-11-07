@@ -5,7 +5,7 @@ We developed an inexpensive, single board computer-based, easy-to-use setup for 
 
 ![Mouse on wheel](/media/mouse_on_wheel_small.png)
 
-## Main hardware requriments: 
+## Main hardware requirements: 
 1. _ESP32 microcontrollers_ to track and convert mouse movement on a treadmill or wheel to serial data and to control other harware elements (lick spout for reward delivery).
 2. _Raspberry Pi 4_ for building and simulating the virtual reality environment. 
 3. _Projector_ for visualizing the virtual corridor.
