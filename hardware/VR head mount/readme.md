@@ -8,7 +8,7 @@ Our headpost design consists of two interlocking manifolds for securing a metal 
 |set screws| M2.5 x 6 | McMasterr Carr|
 |thumb screws|8-32 x 1/2"| McMasterr Carr|
 |goniometers| Edmund Optics | 66-526, 66-527 |
-| metal headposts | Stainless 304 Annealed| [eMachineShop](https://www.emachineshop.com/)|
+| metal headposts | Stainless 304 Annealed or Titanium| [eMachineShop](https://www.emachineshop.com/)|
 | optical posts (2) | 1/2" series| Thorlabs|
 |right angle clamp| RA90| Thorlabs|
 

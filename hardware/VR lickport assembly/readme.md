@@ -5,7 +5,7 @@ We developed a capacitive touch sensor lick port which is highly sensitive and e
 | material | description | source |
 | -------- | ----------- | ------ | 
 |ESP32 | microcontroller | e.g., [Amazon.com](https://www.amazon.com/s?k=ESP32&crid=ZCZ3J597DJO9&sprefix=esp32%2Caps%2C94&ref=nb_sb_noss_1)|
-|ESP32 shield| custom design | see files: ????? |
+|ESP32 shield| custom design | OpenMaze.org |
 |Capacitive Touch Breakout|AT42QT1010|Sparkfun|
 | lick spout | 20068-638[^1]| [VWR](https://us.vwr.com/store/) |
 |adjustable arm| for holding the lick spout | [Amazon](https://www.amazon.com/Magnetic-Adjustable-Indicator-Holder-Digital/dp/B00L5T2ZA8) |
