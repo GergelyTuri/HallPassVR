@@ -1,6 +1,8 @@
 # HallPassVR
 ## Virtual reality system for head-fixed mouse experiments. 
 
+See published paper on [JOVE](https://app.jove.com/v/64863/an-open-source-virtual-reality-system-for-the-measurement-of-spatial-learning-in-head-restrained-mice).
+
 We developed an inexpensive, single board computer-based, easy-to-use setup for investigation of mouse spatial learning behavior using a visual virtual reality (VR) environment. This system uses a network of microcontrollers (ESP32) and a Raspberry Pi single-board computer to display a virtual linear track to a headfixed mouse running on a wheel. Along with a custom software package written in Python and C++ to generate parameterized virtual environments, this methodology allows researchers the design of various spatial navigation-based experiments to study neural circuits in the brain underlying spatial behaviors. [Example video here](https://www.youtube.com/watch?v=iCfhJT3dYIo):  
 
 ![Mouse on wheel](/media/mouse_on_wheel_small.png)
