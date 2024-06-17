@@ -22,7 +22,6 @@ String programName = "wheel_VR_hiddenRewMultTrigRand_esp32_1m_091722c";
 
 int rewDur = 60;
 int isESP = 0;  // 1 if you're detecting licks with ESP32 touch pins
-int isButtonStart = 0;  // this means that prog doesn't print out position data until button is pressed
 int isOperant = 1;  // animal has to lick to get reward
 int altOpt = 1; // alternate operant on even laps? 
 int maxNumZoneRew = 3;//5;
@@ -39,7 +38,7 @@ int rewZoneOptTime = 4000;  //2000; // ms after entering rewZone animal has the 
 long interLickInt = 2;  // make really large if you want single lick choice (but might have to use 'long' var)
 
 int trackLength = 2000;//1800;//0;
-int startSession = 1;
+int startSession = 0;
 
 // for velocity-based reward
 int isVelRew = 0;   // reward if animal reaches a certain min velocity (in rotary clicks)
@@ -73,9 +72,9 @@ int syncIntv = 5000;  // interval of pulse train
 // Pin numbers
 int lickPin = 2;//36;
 //int spkrPin = 47;
+int trigPin = 12;
 int ledPin = 13;
-int buttonPin1 = 14;
-int trigPin = 39;  // pin for triggering nVista imaging (high during session if isButtonStart)
+int buttonPin1 = 15;
 int syncPin = 36; // pin for nVista sync
 int syncPin2 = 35;  // LED for video sync
 int solPin1 = 12; //5;
@@ -192,10 +191,8 @@ void loop() // run over and over
   }
 
   checkLicks();
-
-  if (isButtonStart == 1) {
-    checkButton();
-  }
+  checkButton();
+  
   if (startSession == 1) {
     checkSyncState();
   }
@@ -334,27 +331,27 @@ void checkButton() { // for button start
         prevButtonTime = millis();
         giveReward();
         prevRew = 1;
-//      if (startSession == 0) {
-//        startSession = 1;
-//        startTime = millis();
-//        digitalWrite(trigPin, HIGH); // trig stays HIGH whole session after button start
-//        Serial.print("START SESSION button, ms = ");
-//        Serial.println(startTime);
-//        Serial.print("trigTime, ms=");
-//        Serial.println(startTime);
-//        prevButtonTime = startTime;
-//
-//      }
-//      else {
-//        startSession = 0;
-//        endTime = millis();
-//        digitalWrite(trigPin, LOW);
-//        digitalWrite(syncPin, LOW);
-//        digitalWrite(syncPin2, LOW);
-//        Serial.print("END session button, ms=");
-//        Serial.println(endTime);
-//        prevButtonTime = endTime;
-//      }
+     if (startSession == 0) {
+       startSession = 1;
+       startTime = millis();
+       digitalWrite(trigPin, HIGH); // trig stays HIGH whole session after button start
+       Serial.print("START SESSION button, ms = ");
+       Serial.println(startTime);
+       Serial.print("trigTime, ms=");
+       Serial.println(startTime);
+       prevButtonTime = startTime;
+
+     }
+     else {
+       startSession = 0;
+       endTime = millis();
+       digitalWrite(trigPin, LOW);
+       digitalWrite(syncPin, LOW);
+       digitalWrite(syncPin2, LOW);
+       Serial.print("END session button, ms=");
+       Serial.println(endTime);
+       prevButtonTime = endTime;
+     }
     }
   }
 }
@@ -574,8 +571,6 @@ void printHeader() {
 
   Serial.print("rewDur=");
   Serial.println(rewDur);
-  Serial.print("isButtonStart=");
-  Serial.println(isButtonStart);
   Serial.print("isOperant=");
   Serial.println(isOperant);
   Serial.print("altOpt=");
