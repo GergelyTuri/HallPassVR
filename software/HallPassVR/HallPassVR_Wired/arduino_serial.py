@@ -43,7 +43,7 @@ def main():
     )
 
     args = ap.parse_args()
-    mouse_id = args.mouse_id.split(",")
+    mouse_id = args.mouse_id.split(",")[0]
     cond = args.condition
     port = '/dev/ttyUSB1'
 
@@ -54,8 +54,8 @@ def main():
     session_ended = False  # Flag to indicate the end of the session
     file_name = "_".join(mouse_id) + f"_{formatted_date_time}.json"
 
-    data_list = {mouse_id: []}
-
+    data_list = []
+    
     header = {
         "mouse_id": mouse_id,
         "condition": cond,
@@ -81,7 +81,7 @@ def main():
                         "%Y-%m-%d_%H-%M-%S.%f"
                     ),
                 }
-                data_list[mouse_id].append(data_json)
+                data_list.append(data)
                 if end_session_message in data_json.get("message", ""):
                     end_message = {
                         "message": data,
@@ -90,7 +90,7 @@ def main():
                         ),
                     }
                     # adding the end session message to all the mice
-                    data_list[mouse_id].append(end_message)
+                    data_list.append(mouse_id + ":" + end_message)
                     print("Session has ended, closing file and exiting...")
                     session_ended = True
                     break
@@ -107,7 +107,7 @@ def main():
             "message": "KeyboardInterrupt",
             "absolute_time": datetime.now().strftime("%Y-%m-%d_%H-%M-%S.%f"),
         }
-        data_list[mouse_id].append(keyboard_interrupt)
+        data_list.append(keyboard_interrupt)
         print("KeyboardInterrupt detected. Saving data to file...")
 
     with open(join("data", file_name), "w", encoding="utf-8") as f:
