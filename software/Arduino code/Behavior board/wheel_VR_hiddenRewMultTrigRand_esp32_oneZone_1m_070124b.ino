@@ -1,7 +1,7 @@
 /*
   wheel_VR_hiddenRewMultTrigRand_esp32_1m_091722c.ino
   from: treadmill_hiddenRewardMultTrigRFIDrand_(date).ino
-  Clay 2022
+  Clay 2024
 
   Using on OpenMaze OMw small PCB
   for VR behavior.
@@ -474,6 +474,7 @@ void serialEvent2() {
         lapReset();
       }
       else {
+        //Serial.println(inputString);
         updatePosition(); // update position and see if this is a reward zone
       }
 
