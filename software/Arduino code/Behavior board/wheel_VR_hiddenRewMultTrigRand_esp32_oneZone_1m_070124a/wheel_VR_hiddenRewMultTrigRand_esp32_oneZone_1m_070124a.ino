@@ -427,6 +427,7 @@ void checkLicks() {
 // to reprint header on Processing start for Processing 4 (which doesn't restart arduino)
 void serialEvent1() { // to read serial input from Processing
   while (Serial.available()) {
+    Serial.print("Serial available");
     // get the new byte:
     char inChar = (char)Serial.read();
     // add it to the inputString:
@@ -459,6 +460,7 @@ void serialEvent1() { // to read serial input from Processing
 */
 void serialEvent2() {
   while (Serial2.available()) {
+    Serial.print("serial2 available");
     // get the new byte:
     char inChar = (char)Serial2.read();
     // add it to the inputString:
@@ -471,9 +473,11 @@ void serialEvent2() {
 
       // reset arduino pos if '0' from VR RasPi
       if (inputString.equals("0")) {
+        Serial.println("lap reset");
         lapReset();
       }
       else {
+        Serial.println("Update position");
         updatePosition(); // update position and see if this is a reward zone
       }
 
